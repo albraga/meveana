@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Produto;
+use app\models\PedidoProduto;
 
 /**
- * ProdutoSearch represents the model behind the search form about `app\models\Produto`.
+ * PedidoProdutoSearch represents the model behind the search form about `app\models\PedidoProduto`.
  */
-class ProdutoSearch extends Produto
+class PedidoProdutoSearch extends PedidoProduto
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ProdutoSearch extends Produto
     public function rules()
     {
         return [
+            [['id', 'numero'], 'integer'],
             [['desc_tam'], 'safe'],
-            [['preco'], 'number'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ProdutoSearch extends Produto
      */
     public function search($params)
     {
-        $query = Produto::find();
+        $query = PedidoProduto::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,7 +56,8 @@ class ProdutoSearch extends Produto
         }
 
         $query->andFilterWhere([
-            'preco' => $this->preco,
+            'id' => $this->id,
+            'numero' => $this->numero,
         ]);
 
         $query->andFilterWhere(['like', 'desc_tam', $this->desc_tam]);

@@ -12,9 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'nome_tel')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'telefone')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'endereco')->textInput(['maxlength' => true]) ?>
 

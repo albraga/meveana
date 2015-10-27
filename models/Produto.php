@@ -7,13 +7,10 @@ use Yii;
 /**
  * This is the model class for table "produto".
  *
- * @property string $nome
- * @property integer $pedido_id
- * @property string $descricao
- * @property string $tamanho
+ * @property string $desc_tam
  * @property string $preco
  *
- * @property Pedido $pedido
+ * @property PedidoProduto[] $pedidoProdutos
  */
 class Produto extends \yii\db\ActiveRecord
 {
@@ -31,12 +28,9 @@ class Produto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'pedido_id', 'tamanho'], 'required'],
-            [['pedido_id'], 'integer'],
+            [['desc_tam'], 'required'],
             [['preco'], 'number'],
-            [['nome'], 'string', 'max' => 50],
-            [['descricao'], 'string', 'max' => 255],
-            [['tamanho'], 'string', 'max' => 30]
+            [['desc_tam'], 'string', 'max' => 255]
         ];
     }
 
@@ -46,10 +40,7 @@ class Produto extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nome' => 'Nome',
-            'pedido_id' => 'Pedido ID',
-            'descricao' => 'Descricao',
-            'tamanho' => 'Tamanho',
+            'desc_tam' => 'Desc Tam',
             'preco' => 'Preco',
         ];
     }
@@ -57,8 +48,8 @@ class Produto extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPedido()
+    public function getPedidoProdutos()
     {
-        return $this->hasOne(Pedido::className(), ['id' => 'pedido_id']);
+        return $this->hasMany(PedidoProduto::className(), ['desc_tam' => 'desc_tam']);
     }
 }

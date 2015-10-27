@@ -15,7 +15,7 @@ use Yii;
  * @property string $celular
  *
  * @property Terceirizada $terceiNome
- * @property Pedido $pedido
+ * @property Pedido[] $pedidos
  */
 class Entregador extends \yii\db\ActiveRecord
 {
@@ -67,8 +67,8 @@ class Entregador extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPedido()
+    public function getPedidos()
     {
-        return $this->hasOne(Pedido::className(), ['id' => 'pedido_id']);
+        return $this->hasMany(Pedido::className(), ['entregador' => 'nome']);
     }
 }

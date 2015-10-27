@@ -1,0 +1,51 @@
+CREATE TABLE terceirizada (
+nome VARCHAR(50) NOT NULL,
+cnpj VARCHAR(18) NULL,
+endereco VARCHAR(255) NULL,
+telefone VARCHAR(20) NULL,
+email VARCHAR(20) NULL,
+PRIMARY KEY (nome)
+);
+CREATE TABLE entregador (
+nome VARCHAR(50) NOT NULL,
+tercei_nome VARCHAR(50) NOT NULL,
+pedido_id INT NOT NULL,
+cpf VARCHAR(18) NULL,
+rg VARCHAR(18) NULL,
+celular VARCHAR(20) NULL,
+PRIMARY KEY (nome),
+FOREIGN KEY (tercei_nome) REFERENCES terceirizada(nome)
+);
+CREATE TABLE status (
+status VARCHAR(30) PRIMARY KEY
+);
+CREATE TABLE produto (
+desc_tam VARCHAR(255) NOT NULL,
+preco DECIMAL(6,2),
+PRIMARY KEY (desc_tam)
+);
+CREATE TABLE cliente (
+nome_tel VARCHAR(50) NOT NULL,
+nome VARCHAR(50) NOT NULL,
+tel VARCHAR(20) NOT NULL,
+endereco VARCHAR(255) NOT NULL,
+pontoref VARCHAR(255) NULL,
+datanasc DATE NULL,
+PRIMARY KEY (nome_tel)
+);
+CREATE TABLE pedido (
+numero INT NOT NULL AUTO_INCREMENT,
+cliente_nometel VARCHAR(50) NOT NULL,
+entregador VARCHAR(50) NULL,
+status VARCHAR(30) NULL,
+PRIMARY KEY (numero),
+FOREIGN KEY (cliente_nometel) REFERENCES cliente(nome_tel),
+FOREIGN KEY (entregador) REFERENCES entregador(nome),
+FOREIGN KEY (status) REFERENCES status(status)
+);
+CREATE TABLE pedido_produto (
+     numero INT NOT NULL,
+     desc_tam VARCHAR(255) NOT NULL,
+     FOREIGN KEY (numero) REFERENCES pedido(numero),
+     FOREIGN KEY (desc_tam) REFERENCES produto(desc_tam)
+);

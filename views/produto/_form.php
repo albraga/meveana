@@ -12,13 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'pedido_id')->textInput() ?>
-
-    <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'tamanho')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'desc_tam')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'preco')->textInput(['maxlength' => true]) ?>
 

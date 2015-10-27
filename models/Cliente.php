@@ -7,8 +7,9 @@ use Yii;
 /**
  * This is the model class for table "cliente".
  *
+ * @property string $nome_tel
  * @property string $nome
- * @property string $telefone
+ * @property string $tel
  * @property string $endereco
  * @property string $pontoref
  * @property string $datanasc
@@ -31,10 +32,10 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'telefone', 'endereco'], 'required'],
+            [['nome_tel', 'nome', 'tel', 'endereco'], 'required'],
             [['datanasc'], 'safe'],
-            [['nome'], 'string', 'max' => 50],
-            [['telefone'], 'string', 'max' => 20],
+            [['nome_tel', 'nome'], 'string', 'max' => 50],
+            [['tel'], 'string', 'max' => 20],
             [['endereco', 'pontoref'], 'string', 'max' => 255]
         ];
     }
@@ -45,8 +46,9 @@ class Cliente extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'nome_tel' => 'Nome Tel',
             'nome' => 'Nome',
-            'telefone' => 'Telefone',
+            'tel' => 'Tel',
             'endereco' => 'Endereco',
             'pontoref' => 'Pontoref',
             'datanasc' => 'Datanasc',
@@ -58,6 +60,6 @@ class Cliente extends \yii\db\ActiveRecord
      */
     public function getPedidos()
     {
-        return $this->hasMany(Pedido::className(), ['cliente_nome' => 'nome', 'cliente_tel' => 'telefone']);
+        return $this->hasMany(Pedido::className(), ['cliente_nometel' => 'nome_tel']);
     }
 }

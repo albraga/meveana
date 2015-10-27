@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Cliente;
-use app\models\ClienteSearch;
+use app\models\PedidoProduto;
+use app\models\PedidoProdutoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClienteController implements the CRUD actions for Cliente model.
+ * PedidoProdutoController implements the CRUD actions for PedidoProduto model.
  */
-class ClienteController extends Controller
+class PedidoProdutoController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class ClienteController extends Controller
     }
 
     /**
-     * Lists all Cliente models.
+     * Lists all PedidoProduto models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ClienteSearch();
+        $searchModel = new PedidoProdutoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,8 +42,8 @@ class ClienteController extends Controller
     }
 
     /**
-     * Displays a single Cliente model.
-     * @param string $id
+     * Displays a single PedidoProduto model.
+     * @param integer $id
      * @return mixed
      */
     public function actionView($id)
@@ -54,16 +54,16 @@ class ClienteController extends Controller
     }
 
     /**
-     * Creates a new Cliente model.
+     * Creates a new PedidoProduto model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Cliente();
+        $model = new PedidoProduto();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nome_tel]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -72,9 +72,9 @@ class ClienteController extends Controller
     }
 
     /**
-     * Updates an existing Cliente model.
+     * Updates an existing PedidoProduto model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
@@ -82,7 +82,7 @@ class ClienteController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nome_tel]);
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -91,9 +91,9 @@ class ClienteController extends Controller
     }
 
     /**
-     * Deletes an existing Cliente model.
+     * Deletes an existing PedidoProduto model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
@@ -104,15 +104,15 @@ class ClienteController extends Controller
     }
 
     /**
-     * Finds the Cliente model based on its primary key value.
+     * Finds the PedidoProduto model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
-     * @return Cliente the loaded model
+     * @param integer $id
+     * @return PedidoProduto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Cliente::findOne($id)) !== null) {
+        if (($model = PedidoProduto::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

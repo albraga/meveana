@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cliente */
 
-$this->title = $model->nome;
+$this->title = $model->nome_tel;
 $this->params['breadcrumbs'][] = ['label' => 'Clientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'nome' => $model->nome, 'telefone' => $model->telefone], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'nome' => $model->nome, 'telefone' => $model->telefone], [
+        <?= Html::a('Update', ['update', 'id' => $model->nome_tel], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->nome_tel], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -28,8 +28,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'nome_tel',
             'nome',
-            'telefone',
+            'tel',
             'endereco',
             'pontoref',
             'datanasc',

@@ -18,8 +18,8 @@ class PedidoSearch extends Pedido
     public function rules()
     {
         return [
-            [['id', 'quantidade'], 'integer'],
-            [['cliente_nome', 'cliente_tel'], 'safe'],
+            [['numero'], 'integer'],
+            [['cliente_nometel', 'entregador', 'status'], 'safe'],
         ];
     }
 
@@ -56,12 +56,12 @@ class PedidoSearch extends Pedido
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
-            'quantidade' => $this->quantidade,
+            'numero' => $this->numero,
         ]);
 
-        $query->andFilterWhere(['like', 'cliente_nome', $this->cliente_nome])
-            ->andFilterWhere(['like', 'cliente_tel', $this->cliente_tel]);
+        $query->andFilterWhere(['like', 'cliente_nometel', $this->cliente_nometel])
+            ->andFilterWhere(['like', 'entregador', $this->entregador])
+            ->andFilterWhere(['like', 'status', $this->status]);
 
         return $dataProvider;
     }

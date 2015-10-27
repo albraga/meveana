@@ -7,14 +7,15 @@ use Yii;
 /**
  * This is the model class for table "pedido".
  *
- * @property integer $id
- * @property string $cliente_nome
- * @property string $cliente_tel
- * @property integer $quantidade
+ * @property integer $numero
+ * @property string $cliente_nometel
+ * @property string $entregador
+ * @property string $status
  *
- * @property Entregador[] $entregadors
- * @property Cliente $clienteNome
- * @property Produto[] $produtos
+ * @property Cliente $clienteNometel
+ * @property Entregador $entregador0
+ * @property Status $status0
+ * @property PedidoProduto[] $pedidoProdutos
  */
 class Pedido extends \yii\db\ActiveRecord
 {
@@ -32,10 +33,9 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'cliente_nome', 'cliente_tel', 'quantidade'], 'required'],
-            [['id', 'quantidade'], 'integer'],
-            [['cliente_nome'], 'string', 'max' => 50],
-            [['cliente_tel'], 'string', 'max' => 20]
+            [['cliente_nometel'], 'required'],
+            [['cliente_nometel', 'entregador'], 'string', 'max' => 50],
+            [['status'], 'string', 'max' => 30]
         ];
     }
 
@@ -45,34 +45,42 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'cliente_nome' => 'Cliente Nome',
-            'cliente_tel' => 'Cliente Tel',
-            'quantidade' => 'Quantidade',
+            'numero' => 'Numero',
+            'cliente_nometel' => 'Cliente Nometel',
+            'entregador' => 'Entregador',
+            'status' => 'Status',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEntregadors()
+    public function getClienteNometel()
     {
-        return $this->hasMany(Entregador::className(), ['pedido_id' => 'id']);
+        return $this->hasOne(Cliente::className(), ['nome_tel' => 'cliente_nometel']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getClienteNome()
+    public function getEntregador0()
     {
-        return $this->hasOne(Cliente::className(), ['nome' => 'cliente_nome', 'telefone' => 'cliente_tel']);
+        return $this->hasOne(Entregador::className(), ['nome' => 'entregador']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProdutos()
+    public function getStatus0()
     {
-        return $this->hasMany(Produto::className(), ['pedido_id' => 'id']);
+        return $this->hasOne(Status::className(), ['status' => 'status']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPedidoProdutos()
+    {
+        return $this->hasMany(PedidoProduto::className(), ['numero' => 'numero']);
     }
 }

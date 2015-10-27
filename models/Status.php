@@ -8,6 +8,8 @@ use Yii;
  * This is the model class for table "status".
  *
  * @property string $status
+ *
+ * @property Pedido[] $pedidos
  */
 class Status extends \yii\db\ActiveRecord
 {
@@ -38,5 +40,13 @@ class Status extends \yii\db\ActiveRecord
         return [
             'status' => 'Status',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPedidos()
+    {
+        return $this->hasMany(Pedido::className(), ['status' => 'status']);
     }
 }
