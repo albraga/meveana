@@ -44,6 +44,7 @@ FOREIGN KEY (entregador) REFERENCES entregador(nome),
 FOREIGN KEY (status) REFERENCES status(status)
 );
 CREATE TABLE pedido_produto (
+     id INT NOT NULL PRIMARY KEY,  
      numero INT NOT NULL,
      desc_tam VARCHAR(255) NOT NULL,
      FOREIGN KEY (numero) REFERENCES pedido(numero),
