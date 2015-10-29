@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "cliente".
  *
- * @property string $nome_tel
  * @property string $nome
  * @property string $tel
  * @property string $endereco
@@ -32,9 +31,9 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome_tel', 'nome', 'tel', 'endereco'], 'required'],
+            [['nome', 'tel', 'endereco'], 'required'],
             [['datanasc'], 'safe'],
-            [['nome_tel', 'nome'], 'string', 'max' => 50],
+            [['nome'], 'string', 'max' => 50],
             [['tel'], 'string', 'max' => 20],
             [['endereco', 'pontoref'], 'string', 'max' => 255]
         ];
@@ -46,7 +45,6 @@ class Cliente extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nome_tel' => 'Nome Tel',
             'nome' => 'Nome',
             'tel' => 'Tel',
             'endereco' => 'Endereco',
@@ -60,6 +58,6 @@ class Cliente extends \yii\db\ActiveRecord
      */
     public function getPedidos()
     {
-        return $this->hasMany(Pedido::className(), ['cliente_nometel' => 'nome_tel']);
+        return $this->hasMany(Pedido::className(), ['cliente_nome' => 'nome', 'cliente_tel' => 'tel']);
     }
 }

@@ -8,11 +8,11 @@ use Yii;
  * This is the model class for table "pedido_produto".
  *
  * @property integer $id
- * @property integer $numero
- * @property string $desc_tam
+ * @property integer $pedido_codigo
+ * @property string $produto_desc_tam
  *
- * @property Pedido $numero0
- * @property Produto $descTam
+ * @property Pedido $pedidoCodigo
+ * @property Produto $produtoDescTam
  */
 class PedidoProduto extends \yii\db\ActiveRecord
 {
@@ -30,9 +30,9 @@ class PedidoProduto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'numero', 'desc_tam'], 'required'],
-            [['id', 'numero'], 'integer'],
-            [['desc_tam'], 'string', 'max' => 255]
+            [['id', 'pedido_codigo', 'produto_desc_tam'], 'required'],
+            [['id', 'pedido_codigo'], 'integer'],
+            [['produto_desc_tam'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,24 +43,24 @@ class PedidoProduto extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'numero' => 'Numero',
-            'desc_tam' => 'Desc Tam',
+            'pedido_codigo' => 'Pedido Codigo',
+            'produto_desc_tam' => 'Produto Desc Tam',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getNumero0()
+    public function getPedidoCodigo()
     {
-        return $this->hasOne(Pedido::className(), ['numero' => 'numero']);
+        return $this->hasOne(Pedido::className(), ['codigo' => 'pedido_codigo']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDescTam()
+    public function getProdutoDescTam()
     {
-        return $this->hasOne(Produto::className(), ['desc_tam' => 'desc_tam']);
+        return $this->hasOne(Produto::className(), ['desc_tam' => 'produto_desc_tam']);
     }
 }

@@ -50,6 +50,6 @@ class Produto extends \yii\db\ActiveRecord
      */
     public function getPedidoProdutos()
     {
-        return $this->hasMany(PedidoProduto::className(), ['desc_tam' => 'desc_tam']);
+        return $this->hasMany(PedidoProduto::className(), ['produto_desc_tam' => 'desc_tam']);
     }
 }

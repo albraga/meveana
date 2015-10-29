@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id')->textInput() ?>
 
-    <?= $form->field($model, 'numero')->textInput() ?>
+    <?= $form->field($model, 'pedido_codigo')->textInput() ?>
 
-    <?= $form->field($model, 'desc_tam')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'produto_desc_tam')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

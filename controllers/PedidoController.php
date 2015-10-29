@@ -63,7 +63,7 @@ class PedidoController extends Controller
         $model = new Pedido();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->numero]);
+            return $this->redirect(['view', 'id' => $model->codigo]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -82,7 +82,7 @@ class PedidoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->numero]);
+            return $this->redirect(['view', 'id' => $model->codigo]);
         } else {
             return $this->render('update', [
                 'model' => $model,

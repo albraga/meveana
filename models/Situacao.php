@@ -5,20 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "status".
+ * This is the model class for table "situacao".
  *
  * @property string $status
  *
  * @property Pedido[] $pedidos
  */
-class Status extends \yii\db\ActiveRecord
+class Situacao extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'status';
+        return 'situacao';
     }
 
     /**
@@ -47,6 +47,6 @@ class Status extends \yii\db\ActiveRecord
      */
     public function getPedidos()
     {
-        return $this->hasMany(Pedido::className(), ['status' => 'status']);
+        return $this->hasMany(Pedido::className(), ['situacao_status' => 'status']);
     }
 }

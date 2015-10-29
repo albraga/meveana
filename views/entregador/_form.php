@@ -16,8 +16,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tercei_nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pedido_id')->textInput() ?>
-
     <?= $form->field($model, 'cpf')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'rg')->textInput(['maxlength' => true]) ?>

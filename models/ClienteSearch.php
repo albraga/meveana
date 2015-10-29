@@ -18,7 +18,7 @@ class ClienteSearch extends Cliente
     public function rules()
     {
         return [
-            [['nome_tel', 'nome', 'tel', 'endereco', 'pontoref', 'datanasc'], 'safe'],
+            [['nome', 'tel', 'endereco', 'pontoref', 'datanasc'], 'safe'],
         ];
     }
 
@@ -58,8 +58,7 @@ class ClienteSearch extends Cliente
             'datanasc' => $this->datanasc,
         ]);
 
-        $query->andFilterWhere(['like', 'nome_tel', $this->nome_tel])
-            ->andFilterWhere(['like', 'nome', $this->nome])
+        $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'tel', $this->tel])
             ->andFilterWhere(['like', 'endereco', $this->endereco])
             ->andFilterWhere(['like', 'pontoref', $this->pontoref]);

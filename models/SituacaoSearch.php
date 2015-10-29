@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Status;
+use app\models\Situacao;
 
 /**
- * StatusSearch represents the model behind the search form about `app\models\Status`.
+ * SituacaoSearch represents the model behind the search form about `app\models\Situacao`.
  */
-class StatusSearch extends Status
+class SituacaoSearch extends Situacao
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class StatusSearch extends Status
      */
     public function search($params)
     {
-        $query = Status::find();
+        $query = Situacao::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

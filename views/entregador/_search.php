@@ -19,13 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tercei_nome') ?>
 
-    <?= $form->field($model, 'pedido_id') ?>
-
     <?= $form->field($model, 'cpf') ?>
 
     <?= $form->field($model, 'rg') ?>
 
-    <?php // echo $form->field($model, 'celular') ?>
+    <?= $form->field($model, 'celular') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

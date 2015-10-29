@@ -7,14 +7,15 @@ use Yii;
 /**
  * This is the model class for table "pedido".
  *
- * @property integer $numero
- * @property string $cliente_nometel
+ * @property integer $codigo
+ * @property string $cliente_nome
+ * @property string $cliente_tel
  * @property string $entregador
- * @property string $status
+ * @property string $situacao_status
  *
- * @property Cliente $clienteNometel
+ * @property Cliente $clienteNome
  * @property Entregador $entregador0
- * @property Status $status0
+ * @property Situacao $situacaoStatus
  * @property PedidoProduto[] $pedidoProdutos
  */
 class Pedido extends \yii\db\ActiveRecord
@@ -33,9 +34,10 @@ class Pedido extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cliente_nometel'], 'required'],
-            [['cliente_nometel', 'entregador'], 'string', 'max' => 50],
-            [['status'], 'string', 'max' => 30]
+            [['cliente_nome', 'cliente_tel', 'situacao_status'], 'required'],
+            [['cliente_nome', 'entregador'], 'string', 'max' => 50],
+            [['cliente_tel'], 'string', 'max' => 20],
+            [['situacao_status'], 'string', 'max' => 30]
         ];
     }
 
@@ -45,19 +47,20 @@ class Pedido extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'numero' => 'Numero',
-            'cliente_nometel' => 'Cliente Nometel',
+            'codigo' => 'Codigo',
+            'cliente_nome' => 'Cliente Nome',
+            'cliente_tel' => 'Cliente Tel',
             'entregador' => 'Entregador',
-            'status' => 'Status',
+            'situacao_status' => 'Situacao Status',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getClienteNometel()
+    public function getClienteNome()
     {
-        return $this->hasOne(Cliente::className(), ['nome_tel' => 'cliente_nometel']);
+        return $this->hasOne(Cliente::className(), ['nome' => 'cliente_nome', 'tel' => 'cliente_tel']);
     }
 
     /**
@@ -71,9 +74,9 @@ class Pedido extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getStatus0()
+    public function getSituacaoStatus()
     {
-        return $this->hasOne(Status::className(), ['status' => 'status']);
+        return $this->hasOne(Situacao::className(), ['status' => 'situacao_status']);
     }
 
     /**
@@ -81,6 +84,6 @@ class Pedido extends \yii\db\ActiveRecord
      */
     public function getPedidoProdutos()
     {
-        return $this->hasMany(PedidoProduto::className(), ['numero' => 'numero']);
+        return $this->hasMany(PedidoProduto::className(), ['pedido_codigo' => 'codigo']);
     }
 }

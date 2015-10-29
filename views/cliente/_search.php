@@ -15,8 +15,6 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'nome_tel') ?>
-
     <?= $form->field($model, 'nome') ?>
 
     <?= $form->field($model, 'tel') ?>
@@ -25,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'pontoref') ?>
 
-    <?php // echo $form->field($model, 'datanasc') ?>
+    <?= $form->field($model, 'datanasc') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

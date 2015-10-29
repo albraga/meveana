@@ -18,8 +18,8 @@ class PedidoProdutoSearch extends PedidoProduto
     public function rules()
     {
         return [
-            [['id', 'numero'], 'integer'],
-            [['desc_tam'], 'safe'],
+            [['id', 'pedido_codigo'], 'integer'],
+            [['produto_desc_tam'], 'safe'],
         ];
     }
 
@@ -57,10 +57,10 @@ class PedidoProdutoSearch extends PedidoProduto
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'numero' => $this->numero,
+            'pedido_codigo' => $this->pedido_codigo,
         ]);
 
-        $query->andFilterWhere(['like', 'desc_tam', $this->desc_tam]);
+        $query->andFilterWhere(['like', 'produto_desc_tam', $this->produto_desc_tam]);
 
         return $dataProvider;
     }

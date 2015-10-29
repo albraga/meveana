@@ -19,7 +19,6 @@ class EntregadorSearch extends Entregador
     {
         return [
             [['nome', 'tercei_nome', 'cpf', 'rg', 'celular'], 'safe'],
-            [['pedido_id'], 'integer'],
         ];
     }
 
@@ -54,10 +53,6 @@ class EntregadorSearch extends Entregador
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->andFilterWhere([
-            'pedido_id' => $this->pedido_id,
-        ]);
 
         $query->andFilterWhere(['like', 'nome', $this->nome])
             ->andFilterWhere(['like', 'tercei_nome', $this->tercei_nome])

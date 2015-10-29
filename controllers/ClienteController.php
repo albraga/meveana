@@ -43,13 +43,14 @@ class ClienteController extends Controller
 
     /**
      * Displays a single Cliente model.
-     * @param string $id
+     * @param string $nome
+     * @param string $tel
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($nome, $tel)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($nome, $tel),
         ]);
     }
 
@@ -63,7 +64,7 @@ class ClienteController extends Controller
         $model = new Cliente();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nome_tel]);
+            return $this->redirect(['view', 'nome' => $model->nome, 'tel' => $model->tel]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -74,15 +75,16 @@ class ClienteController extends Controller
     /**
      * Updates an existing Cliente model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
+     * @param string $nome
+     * @param string $tel
      * @return mixed
      */
-    public function actionUpdate($id)
+    public function actionUpdate($nome, $tel)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($nome, $tel);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->nome_tel]);
+            return $this->redirect(['view', 'nome' => $model->nome, 'tel' => $model->tel]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -93,12 +95,13 @@ class ClienteController extends Controller
     /**
      * Deletes an existing Cliente model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $id
+     * @param string $nome
+     * @param string $tel
      * @return mixed
      */
-    public function actionDelete($id)
+    public function actionDelete($nome, $tel)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($nome, $tel)->delete();
 
         return $this->redirect(['index']);
     }
@@ -106,13 +109,14 @@ class ClienteController extends Controller
     /**
      * Finds the Cliente model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $id
+     * @param string $nome
+     * @param string $tel
      * @return Cliente the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($nome, $tel)
     {
-        if (($model = Cliente::findOne($id)) !== null) {
+        if (($model = Cliente::findOne(['nome' => $nome, 'tel' => $tel])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

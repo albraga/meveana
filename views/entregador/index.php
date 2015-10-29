@@ -27,10 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'nome',
             'tercei_nome',
-            'pedido_id',
             'cpf',
             'rg',
-            // 'celular',
+            'celular',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

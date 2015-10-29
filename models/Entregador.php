@@ -9,7 +9,6 @@ use Yii;
  *
  * @property string $nome
  * @property string $tercei_nome
- * @property integer $pedido_id
  * @property string $cpf
  * @property string $rg
  * @property string $celular
@@ -33,8 +32,7 @@ class Entregador extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'tercei_nome', 'pedido_id'], 'required'],
-            [['pedido_id'], 'integer'],
+            [['nome', 'tercei_nome'], 'required'],
             [['nome', 'tercei_nome'], 'string', 'max' => 50],
             [['cpf', 'rg'], 'string', 'max' => 18],
             [['celular'], 'string', 'max' => 20]
@@ -49,7 +47,6 @@ class Entregador extends \yii\db\ActiveRecord
         return [
             'nome' => 'Nome',
             'tercei_nome' => 'Tercei Nome',
-            'pedido_id' => 'Pedido ID',
             'cpf' => 'Cpf',
             'rg' => 'Rg',
             'celular' => 'Celular',
