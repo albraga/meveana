@@ -19,7 +19,7 @@ if (!is_dir($frameworkPath)) {
     echo '<p>You need to install Yii framework via composer or adjust the framework path in file <abbr title="' . __FILE__ . '">' . basename(__FILE__) . '</abbr>.</p>';
     echo '<p>Please refer to the <abbr title="' . dirname(__FILE__) . '/README.md">README</abbr> on how to install Yii.</p>';
 }
-
+//teste
 require_once($frameworkPath . '/requirements/YiiRequirementChecker.php');
 $requirementsChecker = new YiiRequirementChecker();
 
