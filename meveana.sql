@@ -59,7 +59,7 @@ CREATE TABLE pedido_produto (
 );
 
 INSERT INTO situacao VALUES('PENDENTE');
-INSERT INTO situacao VALUES('EM TRÂANSITO');
+INSERT INTO situacao VALUES('EM TRaNSITO');
 INSERT INTO situacao VALUES('ENTREGUE');
 INSERT INTO situacao VALUES('CANCELADO');
 INSERT INTO terceirizada VALUES('Outsourcing LTDA','777','rua tal','9989','out@out.com');
