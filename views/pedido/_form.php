@@ -38,13 +38,13 @@ $tels = array_combine($tels, $tels);
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'cliente_nome')->dropDownList($clientes) ?>
+      <?= $form->field($model, 'cliente_nome')->dropDownList($clientes,['prompt'=>'Selecione...']) ?>
 
-    <?= $form->field($model, 'cliente_tel')->dropDownList($tels) ?>
+    <?= $form->field($model, 'cliente_tel')->dropDownList($tels,['prompt'=>'Selecione...']) ?>
 
-    <?= $form->field($model, 'entregador')->dropDownList($entregadores) ?>
+    <?= $form->field($model, 'entregador')->dropDownList($entregadores,['prompt'=>'Selecione...']) ?>
 
-    <?= $form->field($model, 'situacao_status')->dropDownList($statuses) ?>
+    <?= $form->field($model, 'situacao_status')->dropDownList($statuses,['prompt'=>'Selecione...']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Iniciar' : 'Atualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

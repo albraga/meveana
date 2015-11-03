@@ -58,12 +58,13 @@ class PedidoProdutoController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($pedido_codigo)
     {
         $model = new PedidoProduto();
+        $model->pedido_codigo = $pedido_codigo;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['create', 'id' => $model->id, 'pedido_codigo'=>$pedido_codigo]);
         } else {
             return $this->render('create', [
                 'model' => $model,

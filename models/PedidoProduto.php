@@ -30,8 +30,8 @@ class PedidoProduto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'pedido_codigo', 'produto_desc_tam'], 'required'],
-            [['id', 'pedido_codigo'], 'integer'],
+            [['pedido_codigo', 'produto_desc_tam'], 'required'],
+            [['pedido_codigo'], 'integer'],
             [['produto_desc_tam'], 'string', 'max' => 255]
         ];
     }

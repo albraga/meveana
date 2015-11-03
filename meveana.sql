@@ -51,9 +51,10 @@ FOREIGN KEY (situacao_status) REFERENCES situacao(status)
 );
 
 CREATE TABLE pedido_produto (
-     id INT NOT NULL PRIMARY KEY,  
+     id INT NOT NULL AUTO_INCREMENT,  
      pedido_codigo INT NOT NULL,
      produto_desc_tam VARCHAR(255) NOT NULL,
+     PRIMARY KEY (id),
      FOREIGN KEY (pedido_codigo) REFERENCES pedido(codigo),
      FOREIGN KEY (produto_desc_tam) REFERENCES produto(desc_tam)
 );
@@ -65,7 +66,7 @@ INSERT INTO situacao VALUES('CANCELADO');
 INSERT INTO terceirizada VALUES('Outsourcing LTDA','777','rua tal','9989','out@out.com');
 INSERT INTO entregador VALUES('Fulano de Tal','Outsourcing LTDA','240','341','9959');
 INSERT INTO cliente VALUES('Fulano','9999-2222','rua','nenhum','1979-04-30');
-INSERT INTO cliente VALUES('Fulano','8888-1111','avenida','nada','1948-12-15');
+INSERT INTO cliente VALUES('Sicrano','8888-1111','avenida','nada','1948-12-15');
 INSERT INTO cliente VALUES('Beltrano','6666-3333','travessa','---','1983-01-02');
 INSERT INTO produto VALUES('PIZZA PORTUGUESA PEQUENA', 10.00);
 INSERT INTO produto VALUES('PIZZA PORTUGUESA GRANDE', 20.00);
