@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\PedidoProdutoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pedido Produtos';
+$this->title = 'Produtos do Pedido';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pedido-produto-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pedido Produto', ['create'], ['class' => 'btn btn-success']) ?>
+                       
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'pedido_codigo',
             'produto_desc_tam',
 

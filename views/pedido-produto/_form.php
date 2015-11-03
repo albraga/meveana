@@ -19,12 +19,10 @@ $produtos = array_combine($produtos, $produtos);
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'pedido_codigo')->textInput() ?>
-
-          <?= $form->field($model, 'produto_desc_tam')->dropDownList($produtos, ['prompt' => 'Selecione...']) ?>
+          <?= $form->field($model, 'produto_desc_tam')->dropDownList($produtos, ['prompt' => 'Selecione...'])->label('Descrição') ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Adicionar' : 'Atualizar', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

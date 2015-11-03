@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PedidoProduto */
 
-$this->title = 'Create Pedido Produto';
-$this->params['breadcrumbs'][] = ['label' => 'Pedido Produtos', 'url' => ['index']];
+$this->title = 'Adicionar Produtos';
+$this->params['breadcrumbs'][] = ['label' => 'Adicionar Produtos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pedido-produto-create">
