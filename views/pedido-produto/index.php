@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'pedido_codigo',
             'produto_desc_tam',
-
+            'produto_preco',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

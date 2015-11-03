@@ -1,8 +1,10 @@
-/*
+
 DROP DATABASE IF EXISTS u386344985_mevea;
 CREATE DATABASE IF NOT EXISTS u386344985_mevea;
 USE u386344985_mevea; 
-*/
+
+ALTER DATABASE u386344985_mevea CHARSET = UTF8 COLLATE = utf8_general_ci;
+
 CREATE TABLE terceirizada (
 nome VARCHAR(50) NOT NULL,
 cnpj VARCHAR(18) NULL,
@@ -26,8 +28,8 @@ PRIMARY KEY (status)
 );
 CREATE TABLE produto (
 desc_tam VARCHAR(255) NOT NULL,
-preco DECIMAL(6,2),
-PRIMARY KEY (desc_tam)
+preco DECIMAL(6,2) NOT NULL,
+PRIMARY KEY (desc_tam, preco)
 );
 CREATE TABLE cliente (
 nome VARCHAR(50) NOT NULL,
@@ -54,17 +56,18 @@ CREATE TABLE pedido_produto (
      id INT NOT NULL AUTO_INCREMENT,  
      pedido_codigo INT NOT NULL,
      produto_desc_tam VARCHAR(255) NOT NULL,
+     produto_preco DECIMAL(6,2),
      PRIMARY KEY (id),
      FOREIGN KEY (pedido_codigo) REFERENCES pedido(codigo),
-     FOREIGN KEY (produto_desc_tam) REFERENCES produto(desc_tam)
+     FOREIGN KEY (produto_desc_tam, produto_preco) REFERENCES produto(desc_tam, preco)
 );
 
 INSERT INTO situacao VALUES('PENDENTE');
-INSERT INTO situacao VALUES('EM TRaNSITO');
+INSERT INTO situacao VALUES('EM TRANSITO');
 INSERT INTO situacao VALUES('ENTREGUE');
 INSERT INTO situacao VALUES('CANCELADO');
 INSERT INTO terceirizada VALUES('Outsourcing LTDA','777','rua tal','9989','out@out.com');
-INSERT INTO entregador VALUES('Fulano de Tal','Outsourcing LTDA','240','341','9959');
+INSERT INTO entregador VALUES('Manezinho de Tal','Outsourcing LTDA','240','341','9959');
 INSERT INTO cliente VALUES('Fulano','9999-2222','rua','nenhum','1979-04-30');
 INSERT INTO cliente VALUES('Sicrano','8888-1111','avenida','nada','1948-12-15');
 INSERT INTO cliente VALUES('Beltrano','6666-3333','travessa','---','1983-01-02');

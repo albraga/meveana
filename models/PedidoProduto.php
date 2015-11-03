@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $pedido_codigo
  * @property string $produto_desc_tam
+ * @property string $produto_preco
  *
  * @property Pedido $pedidoCodigo
  * @property Produto $produtoDescTam
@@ -32,6 +33,7 @@ class PedidoProduto extends \yii\db\ActiveRecord
         return [
             [['pedido_codigo', 'produto_desc_tam'], 'required'],
             [['pedido_codigo'], 'integer'],
+            [['produto_preco'], 'number'],
             [['produto_desc_tam'], 'string', 'max' => 255]
         ];
     }
@@ -45,6 +47,7 @@ class PedidoProduto extends \yii\db\ActiveRecord
             'id' => 'ID',
             'pedido_codigo' => 'Pedido Codigo',
             'produto_desc_tam' => 'Produto Desc Tam',
+            'produto_preco' => 'Produto Preco',
         ];
     }
 
@@ -61,6 +64,6 @@ class PedidoProduto extends \yii\db\ActiveRecord
      */
     public function getProdutoDescTam()
     {
-        return $this->hasOne(Produto::className(), ['desc_tam' => 'produto_desc_tam']);
+        return $this->hasOne(Produto::className(), ['desc_tam' => 'produto_desc_tam', 'preco' => 'produto_preco']);
     }
 }

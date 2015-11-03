@@ -27,4 +27,5 @@ $produtos = array_combine($produtos, $produtos);
 
     <?php ActiveForm::end(); ?>
 
+          <?= Html::a('Concluir', ['/pedido-produto/?PedidoProdutoSearch%5Bpedido_codigo%5D='.$model->pedido_codigo], ['class'=>'btn btn-primary']) ?>
 </div>

@@ -20,6 +20,7 @@ class PedidoProdutoSearch extends PedidoProduto
         return [
             [['id', 'pedido_codigo'], 'integer'],
             [['produto_desc_tam'], 'safe'],
+            [['produto_preco'], 'safe'],
         ];
     }
 
